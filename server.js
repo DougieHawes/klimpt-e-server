@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
+import userRoutes from "./routes/userRoutes.js";
+
 const app = express();
 
 const MONGODB_URL = process.env.MONGODB_URL;
@@ -14,6 +16,8 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(PORT, console.log(`express app running on port:${PORT}`));
+
+app.use("/user", userRoutes);
 
 mongoose
   .connect(MONGODB_URL)
