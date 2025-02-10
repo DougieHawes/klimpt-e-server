@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
+import imageRoutes from "./routes/imageRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.listen(PORT, console.log(`express app running on port:${PORT}`));
 
 app.use("/user", userRoutes);
+app.use("/image", imageRoutes);
 
 mongoose
   .connect(MONGODB_URL)
