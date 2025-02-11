@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 
 dotenv.config();
 
+import authRoutes from "./routes/authRoutes.js";
 import imageRoutes from "./routes/imageRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
@@ -18,8 +19,9 @@ app.use(express.json());
 
 app.listen(PORT, console.log(`express app running on port:${PORT}`));
 
-app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 app.use("/image", imageRoutes);
+app.use("/user", userRoutes);
 
 mongoose
   .connect(MONGODB_URL)

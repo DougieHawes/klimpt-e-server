@@ -1,5 +1,6 @@
 import express from "express";
 
+import auth from "../middleware/auth.js";
 import {
   createImage,
   getImage,
@@ -9,9 +10,9 @@ import {
 
 const router = express.Router();
 
-router.post("/", createImage);
-router.get("/:imageId", getImage);
-router.get("/:userId", getUserImages);
-router.get("/", getImages);
+router.post("/", auth, createImage);
+router.get("/:imageId", auth, getImage);
+router.get("/:userId", auth, getUserImages);
+router.get("/", auth, getImages);
 
 export default router;
